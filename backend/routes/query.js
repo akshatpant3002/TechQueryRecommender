@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const queryController = require('../controllers/queryController');
 
-// Route to get all departments
-router.post('/departments', queryController.createQuery);
+router.post('/createQuery', queryController.createQuery);
 
 module.exports = router;

@@ -6,7 +6,7 @@ const departmentController = require('../controllers/departmentController');
 router.get('/departments', departmentController.getAllDepartments);
 
 // Route to create a new department
-router.post('/departments', departmentController.createDepartment);
+router.post('/createDepartment', departmentController.createDepartment);
 
 // Route to delete a department
 router.delete('/departments/:departmentId', departmentController.deleteDepartment);
