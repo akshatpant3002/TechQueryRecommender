@@ -1,0 +1,39 @@
+const Department = require('../models/departmentModel');
+
+// Get all departments with their queries populated
+const getAllDepartments = async (req, res) => {
+  try {
+    const departments = await Department.find().populate('supportQueries');
+    res.status(200).json(departments);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Create a new department
+const createDepartment = async (req, res) => {
+  const { name } = req.body;
+  try {
+    const newDepartment = new Department({ name });
+    await newDepartment.save();
+    res.status(201).json({ message: 'Department created successfully', department: newDepartment });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Delete a department
+const deleteDepartment = async (req, res) => {
+  const { departmentId } = req.params;
+  try {
+    const deletedDepartment = await Department.findByIdAndDelete(departmentId);
+    if (!deletedDepartment) {
+      return res.status(404).json({ message: 'Department not found' });
+    }
+    res.status(200).json({ message: 'Department deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { getAllDepartments, createDepartment, deleteDepartment };

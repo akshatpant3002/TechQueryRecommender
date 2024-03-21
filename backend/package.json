@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshatpant3002/TechQueryRecommender.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshatpant3002/TechQueryRecommender/issues"
+  },
+  "homepage": "https://github.com/akshatpant3002/TechQueryRecommender#readme",
+  "dependencies": {
+    "express": "^4.19.1",
+    "mongoose": "^8.2.2"
+  }
+}
