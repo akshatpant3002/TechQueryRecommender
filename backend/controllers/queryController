@@ -1,16 +1,49 @@
-const SupportQuery = require('../models/supportQueryModel'); // Ensure this path matches your project structure
+const Query = require('../models/queryModel'); // Ensure this path matches your project structure
+const Department = require('../models/departmentModel')
+const { CohereClient } = require("cohere-ai"); // Convert to CommonJS syntax
+
+
+
+const cohere = new CohereClient({
+  token: "xlaNlZPeRdRFhSzQdfgc3apVGHhODVRCtaxBDJlQ"
+});
 
 // Controller for creating a new support query
 const createQuery = async (req, res) => {
-  const { queryText, userId } = req.body; // Assuming each query is associated with a user's ID
+  const { queryText } = req.body; // Assuming each query is associated with a user's ID
   try {
     // Optional: Validate user existence here if your model associates queries with users directly
-    const newQuery = new SupportQuery({
+
+
+      const response = await cohere.classify({
+        model: "92f46bf6-762d-4016-a0dd-0cd1873aea18-ft",
+        inputs: ["My computer is broken"],
+        examples: []
+      });
+    
+      console.log("The confidence levels of the labels are:", response.classifications);
+      console.log("response.classifications[0]: ", response.classifications[0].prediction)
+      const predictionDepartmentName = await response.classifications[0].prediction; 
+
+      console.log("prediction: ", predictionDepartmentName)
+
+
+    const newQuery = new Query({
       queryText: queryText,
     });
+    await newQuery.save()
 
-    await newQuery.save();
-    res.status(201).json({ message: 'Support query created successfully', queryId: newQuery._id });
+    const department = await Department.findOne({name: predictionDepartmentName})
+
+
+    if(department){
+      department.supportQueries.push(newQuery._id);
+    }
+    
+
+    await department.save(); 
+
+    res.status(201).json({ message: 'Support query created successfully', queryId: newQuery._id, department});
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

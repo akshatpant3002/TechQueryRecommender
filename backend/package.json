@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/akshatpant3002/TechQueryRecommender#readme",
   "dependencies": {
+    "cohere-ai": "^7.9.0",
     "express": "^4.19.1",
-    "mongoose": "^8.2.2"
+    "mongoose": "^8.2.2",
+    "nodemon": "^3.1.0"
   }
 }
