@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Make sure the html and body take up the full height of the page */
+html, body {
+  height: 100%;
+  margin: 0; /* Remove default margin */
+}
+
+/* Use this if .kanban-board is a direct child of body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* This will center the board vertically */
+  flex-direction: column; /* Stack children vertically */
+}
+
+/* If .kanban-board is NOT a direct child, use a container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Use 100% of the viewport height */
+}
+
+.kanban-board {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  width: 100%; /* Adjust the width as necessary */
+  /* Add a max-width if necessary, e.g., max-width: 1200px; */
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+.kanban-column {
+  flex: 1;
+  margin: 0 10px;
+  background-color: #f4f4f4;
+  padding: 10px;
+  min-height: 300px; /* Or any other minimum height */
+}
+
+.kanban-task {
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional shadow for depth */
+}
+
