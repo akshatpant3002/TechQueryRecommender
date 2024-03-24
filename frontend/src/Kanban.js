@@ -1,22 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const initialBoard = [
-    { id: 1, name: "Penis", tasks: [{ id: 1, title: "Task 1" }, { id: 2, title: "Task 2" }] },
-    { id: 2, name: "Penis2", tasks: [] },
-    { id: 3, name: "Do Penis 3", tasks: [] },
-  ];
-  
 const KanbanBoard = () => {
-  const [board, setBoard] = useState(initialBoard);
+  const [board, setBoard] = useState([]);
+  const [error, setError] = useState(null);
 
-  // Function to add a new task, move tasks, and delete tasks will go here
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const response = await axios.get('http://localhost:4000/api/department/departments');
+        console.log('Data fetched:', response.data); // Check the fetched data
+        const departments = response.data.map(dept => ({
+          ...dept,
+          tasks: dept.supportQueries.map(query => ({ id: query._id, title: query.queryText }))
+        }));
+        setBoard(departments);
+      } catch (error) {
+        console.error('Error fetching departments:', error);
+        setError(error);
+      }
+    };
+
+    fetchDepartments();
+  }, []);
+
+  if (error) {
+    return <div>An error occurred: {error.message}</div>;
+  }
+
+  if (!board.length) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="kanban-board">
-      {board.map(column => (
-        <div key={column.id} className="kanban-column">
-          <h2>{column.name}</h2>
-          {column.tasks.map(task => (
+      {board.map(department => (
+        <div key={department._id} className="kanban-column">
+          <h2>{department.name}</h2>
+          {department.tasks.map(task => (
             <div key={task.id} className="kanban-task">
               <p>{task.title}</p>
               {/* Buttons or links to move and delete tasks */}
