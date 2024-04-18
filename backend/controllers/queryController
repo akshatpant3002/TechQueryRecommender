@@ -17,7 +17,7 @@ const createQuery = async (req, res) => {
 
       const response = await cohere.classify({
         model: "92f46bf6-762d-4016-a0dd-0cd1873aea18-ft",
-        inputs: ["My computer is broken"],
+        inputs: [queryText],
         examples: []
       });
     
