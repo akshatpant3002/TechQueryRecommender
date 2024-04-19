@@ -1,0 +1,79 @@
+.kanban-header {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust as needed */
+  }
+  
+  .kanban-board {
+    display: flex;
+    justify-content: space-between;
+    /* Add your existing styles here */
+  }
+  
+  .kanban-header button {
+    padding: 10px 20px; /* Top and bottom padding, Left and right padding */
+    background-color: #5580c09d; /* A nice blue shade */
+    color: white; /* Text color */
+    border: none; /* Remove the default border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Text size */
+    font-weight: bold; /* Font weight */
+    text-transform: uppercase; /* Uppercase text */
+    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+    transition: background-color 0.3s ease; /* Transition for the background color */
+    outline: none; /* Remove the focus outline */
+  }
+  
+  .kanban-header button:hover {
+    background-color: #0056b3; /* Darker shade when hovered */
+  }
+  
+  .kanban-header button:active {
+    transform: scale(0.98); /* Slightly reduce the size when clicked */
+  }
+  
+  .title {
+    font-size: 24px; /* Large and readable */
+    font-weight: 600; /* Slightly less bold than the boldest option for a modern look */
+    margin-bottom: 15px; /* Provides space between the title and content below */
+    color: #333; /* A darker shade for high contrast and readability */
+    text-transform: uppercase; /* Optional: Makes the title stand out */
+    letter-spacing: 1px; /* Adds spacing between letters for a more refined look */
+    line-height: 1.2; /* Adjusts the vertical spacing within the text for readability */
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for depth */
+    margin-top: 0; /* Adjust as needed, depending on spacing from elements above */
+    padding-bottom: 10px; /* If you want a space within the border */
+    border-bottom: 2px solid #eee; /* A light line under the title for definition */
+    display: inline-block; /* Wraps the border to the title text length */
+    width: auto; /* Adjust width as necessary, could be 100% or auto */
+  }
+  
+  .kanban-column {
+    flex: 1;
+    margin: 0 10px;
+    background-color: #cce7d4;
+    padding: 10px;
+    min-height: 300px;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  }
+
+  .kanban-column h2 {
+    font-size: 20px; /* Adjust the size as needed */
+    color: #333; /* Dark color for contrast */
+    font-weight: bold; /* Make the title bold */
+    text-align: center; /* Center align the text */
+    margin-bottom: 20px; /* Space between the title and the tasks */
+    padding: 10px; /* Padding inside the title for space */
+    background-color: #8de0bd9d; /* A background color that matches the button */
+    border-radius: 5px; /* Rounded corners for the title */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Consistent with the tasks */
+    text-transform: uppercase; /* Uppercase for a header-like feel */
+    letter-spacing: 1px; /* Spacing between letters */
+  }
+  
+  .kanban-task:hover {
+    background-color: #dcece1b0; /* Slightly change the background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  }
+  
+  

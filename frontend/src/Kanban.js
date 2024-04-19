@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from './Modal'; // Make sure this import points to where your Modal.js is
+import './Kanban.css'; // Make sure to create a CSS file for basic styling
 
 const KanbanBoard = () => {
   const [board, setBoard] = useState([]);
@@ -97,8 +98,14 @@ const KanbanBoard = () => {
 
   return (
     <>
-      <button onClick={handleAddQueryClick}>Add Query</button>
+    
+      <div className="kanban-header">
+        <button onClick={handleAddQueryClick}>Add Query</button>
+      </div>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} onSubmit={handleSubmitQuery} />
+      <div className="title">
+        Query Board
+      </div>
       <div className="kanban-board">
         {board.map(department => (
           <div key={department._id} className="kanban-column">
@@ -114,7 +121,7 @@ const KanbanBoard = () => {
         ))}
       </div>
     </>
-  );
+  );  
 };
 
 export default KanbanBoard;

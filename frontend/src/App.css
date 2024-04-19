@@ -53,8 +53,8 @@ body {
 /* If .kanban-board is NOT a direct child, use a container */
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
   height: 100vh; /* Use 100% of the viewport height */
 }
 
